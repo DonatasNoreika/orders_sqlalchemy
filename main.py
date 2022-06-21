@@ -18,7 +18,7 @@ while True:
         for order in orders:
             print(f"{order}:")
             bendra = 0
-            for nr, line in enumerate(order.order_line):
+            for nr, line in enumerate(order.order_lines):
                 suma = line.product.price * line.qty
                 print(f"\t {nr + 1} {line.product.name}, kaina: {line.product.price}, kiekis: {line.qty}, suma - {suma} Eur")
                 bendra += suma

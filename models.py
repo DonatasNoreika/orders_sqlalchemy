@@ -41,7 +41,7 @@ class Order(Base):
     customer = relationship("Customer")
     status_id = Column(Integer, ForeignKey('status.id'))
     status = relationship("Status")
-    order_line = relationship("OrderLine")
+    order_lines = relationship("OrderLine")
 
     def __repr__(self):
         return f"{self.id}: date - {self.date}, customer - {self.customer.name} {self.customer.last_name}, status - {self.status.name}"
@@ -51,7 +51,7 @@ class OrderLine(Base):
     __tablename__ = "order_line"
     id = Column(Integer, primary_key=True)
     order_id = Column(Integer, ForeignKey('order.id'))
-    order = relationship("Order")
+    order = relationship("Order", back_populates="order_lines")
     product_id = Column(Integer, ForeignKey('product.id'))
     product = relationship("Product")
     qty = Column("Quantity", Integer)
